@@ -12,11 +12,6 @@ public class TimeController {
 	@RequestMapping(method = RequestMethod.GET, path = "/current")
 	public @ResponseBody String sayCurrentTime() {
 		MutableDateTime now = new MutableDateTime();
-		
-		/*String str = now.toString();
-		String str1 = str.substring(0, 10);
-		return str1;*/
-		
 		return now.toString();
 	}
 
