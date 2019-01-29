@@ -27,7 +27,7 @@ public class TimeControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
-	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	
 
 	@Test
 	public void currentTimeShouldReturnTime() throws Exception {
@@ -37,9 +37,10 @@ public class TimeControllerTest {
 
 		String content = result.getResponse().getContentAsString();
 
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 		DateTime contentDateTime = DateTime.parse(content);
 		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
-		Assert.assertEquals(SIMPLE_DATE_FORMAT.format(new Date()), dateTimeFormatter.print(contentDateTime));
+		Assert.assertEquals(simpleDateFormat.format(new Date()), dateTimeFormatter.print(contentDateTime));
 
 		/*
 		 * this.mockMvc.perform(get("/time/current")).andDo(print()).andExpect(status().
